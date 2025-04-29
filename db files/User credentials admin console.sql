@@ -1,0 +1,1 @@
+SELECT * FROM usercreds.current_stock;
