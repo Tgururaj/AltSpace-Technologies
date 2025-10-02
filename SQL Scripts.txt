@@ -1,0 +1,37 @@
+create database altspace;
+use altspace;
+create table users (
+	username varchar(50) NOT NULL, 
+	password varchar(50) NOT NULL, 
+	PRIMARY KEY(username)
+);
+
+create table products (
+	product_id varchar(50) NOT NULL, 
+	product_name varchar(50) NOT NULL, 
+	unit_of_measurement varchar(30), 
+	reorder_level int, 
+    qr_code MEDIUMBLOB,
+	PRIMARY KEY(product_id)
+);
+
+
+create table current_stock (
+	product_id varchar(50) NOT NULL, 
+	current_balance int default 0,
+    PRIMARY KEY(product_id),
+	FOREIGN KEY(product_id) REFERENCES products(product_id) on delete cascade
+);
+
+create table transactions (
+	transaction_number varchar(50) NOT NULL,
+	product_id varchar(50) NOT NULL,
+	item_count int,
+	transaction_type BOOLEAN,
+	transaction_date DATE,
+	username varchar(50) NOT NULL,
+	PRIMARY KEY(transaction_number),
+	FOREIGN KEY(product_id) REFERENCES products(product_id) on delete cascade
+);
+
+insert into users values("admin", "admin");

@@ -1,0 +1,25 @@
+For .war file:
+
+To use the AltSpace StockApp web application the .war file has to be deployed to a servlet-jsp container such as Apache Tomcat.
+
+Steps to deploy the .war file using Apache Tomcat:
+1. Configure the user creditial for the Tomcat manager user to deploy the web applications.
+	a) Open <Tomcat_installation_directorly>/conf
+	b) Edit tomcat-users.xml to configure/add the username and password for the Tomcat manager user.
+	c) Add the following configuration inside <tomcat-users> tag:
+		<role rolename="manager-gui"/>
+		<user username="admin" password="admin" roles="manager-gui"/>
+2. Now, you can open the "Tomcat Web Application Manager" console using the url "http://localhost:8080/manager/html". Note: you can change the port number instead of "8080" according to the port number you have assigned while installing Apache Tomcat.
+3. Now, you will be prompted to enter the username and password to login to the "Tomcat Web Application Manager" console. You can supply the credential according to the configuration done in Step 1.
+4. Under "WAR file to deploy" select the .war file and click "Deploy".
+5. Once the .war file is deployed you can see the link for the deployed app under the "Applications" table.
+
+
+Before using the web application, please create the database and its required tables using the SQL scripts provided in the text file: "SQL Scripts.txt". Please note that the MySQL root user password is "ashkitarun1173@!" which is hard coded in the web application project source 
+
+NOTE: In order to log into the application for the first time, the admin user should be available in the users table, hence the query for inserting the username and password for the admin user has also been listed in the "SQL Scripts.txt" file.
+
+To install the apk into an android device, click on the apk file and make sure that the device allows installing apks from unkown sources.
+NOTE: The IP address to access the web services on the web server has been harcoded in the static variable "STOCK_APP_BASE_URL" in "Home.java".
+Please update the value of the above variable to point to the correct IP address on which the web app is running. 
+To access the source code please import the file named "camtest" into android studio.
